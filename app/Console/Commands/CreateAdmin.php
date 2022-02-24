@@ -12,7 +12,7 @@ class CreateAdmin extends Command
      *
      * @var string
      */
-    protected $signature = 'admin:create';
+    protected $signature = 'gs';
 
     /**
      * The console command description.
@@ -40,14 +40,17 @@ class CreateAdmin extends Command
     {
         $this->info('Creating Admin User.');
         try {
-            $status=exec('git status');
+            $this->info( "status: ".exec('git status'));
+            $this->info("commit: ".exec('git commit -am "message"' ));
+            $this->info("pull :".exec('git pull'));
+            $this->info("push" .exec('git push'));
 
 //            User::create([
 //                'name'=>'Admin',
 //                'email'=>'admin@gmail.com',
 //                'password'=>bcrypt('admin')
 //            ]);
-            $this->info( $status);
+
         }catch (\Throwable $e)
         {
             $this->info("something went wrong.");
