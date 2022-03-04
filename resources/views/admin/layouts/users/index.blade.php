@@ -27,7 +27,7 @@
             <td>
                 <img style="width:100px;" src="{{url('/uploads/User/'.$user->image)}}" alt="image">
             </td>
-            <td>{{$user->role->id}}</td>
+            <td>{{$user->role->name}}</td>
             <td>{{$user->status}}</td>
 
             <td>
