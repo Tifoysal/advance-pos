@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         @foreach($users as $user)
-        
+
         <tr>
             <th scope="row">1</th>
             <td>{{$user->name}}</td>
@@ -29,10 +29,18 @@
             </td>
             <td>{{$user->role->id}}</td>
             <td>{{$user->status}}</td>
-           
+
             <td>
                 <div style="display: flex;">
-                 <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(228, 11, 11)" href="{{route('users.destroy',$user->id)}}">Delete</a></div>
+                 <div style="padding-right: 10px;">
+{{--                     <a class="btn btn-light" style="color: rgb(228, 11, 11)" href="{{route('users.destroy',$user->id)}}">Delete</a>--}}
+                     <form action="{{route('users.destroy',$user->id)}}" method="post">
+                         @csrf
+                         @method('delete')
+                         <button type="submit" class="btn btn-danger">Delete</button>
+                     </form>
+
+                 </div>
                 <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(32, 77, 51)" href="{{route('users.show',$user->id)}}">view</a></div>
                 <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(32, 77, 51)" href="{{route('users.edit',$user->id)}}">Edit</a></div>
                 </div>
