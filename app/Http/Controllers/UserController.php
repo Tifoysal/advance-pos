@@ -40,7 +40,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userimage='';
+        if ($request->hasfile('Imagefile')) {
+            $file=$request->file('Imagefile');
+            $userimage=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+            $file->storeAs('/uploads/User/',$userimage);
+           // dd($userimage);
+        }
+        User::create([
+            'name'=>$request->username,
+            'role_id' =>$request->role,
+            'email'=>$request->email,
+            'password'=>$request->password,
+            'image'=>$userimage,
+         
+        ]);
+        return redirect()->back();
+
     }
 
     /**
@@ -49,9 +65,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id)
     {
-        //
+        $userview=User::find($user_id);
+        return view('admin.layouts.users.show',compact('userview'));
     }
 
     /**
@@ -60,9 +77,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id)
     {
-        //
+        $useredit=User::find($user_id);
+        $roles=Role::all();
+        return view('admin.layouts.users.edit',compact('useredit','roles'));
     }
 
     /**
@@ -72,9 +91,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
-        //
+        $userupdate=User::find($user_id);
+        $user_image=$userupdate->image;
+                if($request->hasFile('Imagefile'))
+                {
+                    $user_image=date('Ymdhis') .'.'. $request->file('Imagefile')->getClientOriginalExtension();
+        
+                    $request->file('Imagefile')->storeAs('/uploads',$user_image);
+        
+                }
+        
+        $userupdate->update([
+            'name'=>$request->username,
+            'role_id' =>$request->role,
+            'email'=>$request->email,
+            'password'=>$request->password,
+            'image'=>$user_image,
+ 
+        ]);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -83,8 +120,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id)
     {
-        //
+        User::find($user_id)->delete();
+        return redirect()->back();
     }
 }
