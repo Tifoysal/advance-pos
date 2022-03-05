@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,11 @@ Route::get('/', function () {
 });
 
 Route::resource('users',UserController::class);
+
+//product 
+Route::get('/product',[ProductController::class,'productlist'])->name('product.list');
+Route::get('/productcategory',[ProductController::class,'productcategory'])->name('product.category');
+Route::post('/product.store',[ProductController::class,'store'])->name('product.store');
 
 
 
