@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +20,14 @@ Route::get('/', function () {
 });
 
 Route::resource('users',UserController::class);
+
+Route::get('add/role',[RoleController::class,'create'])->name('add.role');
+Route::get('list/role',[RoleController::class,'index'])->name('list.role');
+Route::post('create/role',[RoleController::class,'store'])->name('create.role');
+Route::get('edit/role/{role_id}',[RoleController::class,'edit'])->name('edit.role');
+Route::post('update/role/{role_id}',[RoleController::class,'update'])->name('update.role');
+Route::get('view/role/{role_id}',[RoleController::class,'show'])->name('view.role');
+
 
 // category
 Route::get('/category_list',[CategoryController::class,'list_category'])->name('category.list');
