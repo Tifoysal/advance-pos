@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () {   
     return view('admin.master');
 });
 
 Route::resource('users',UserController::class);
 
-
-
-
+// category
+Route::get('/category_list',[CategoryController::class,'list_category'])->name('category.list');
+Route::get('/category_add',[CategoryController::class,'add_category'])->name('category.add');
+Route::post('/category_store',[CategoryController::class,'store_category'])->name('category.store');
+Route::get('/category_view/{category_id}', [CategoryController::class, 'details_category'])->name('category.view');
+Route::get('/category_edit/{category_id}',[CategoryController::class, 'edit_category'])->name('category.edit');
+Route::post('/category_update/{category_id}',[CategoryController::class, 'update_category'])->name('category.update');
+Route::get('/category_delete/{category_id}', [CategoryController::class, 'delete_category'])->name('delete.category');
