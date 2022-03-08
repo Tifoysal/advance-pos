@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () {   
     return view('admin.master');
 });
 
@@ -25,7 +26,17 @@ Route::resource('users',UserController::class);
 Route::get('/product',[ProductController::class,'productlist'])->name('product.list');
 Route::get('/productcategory',[ProductController::class,'productcategory'])->name('product.category');
 Route::post('/product.store',[ProductController::class,'store'])->name('product.store');
+Route::get('/product_delete/{product_id}', [ProductController::class, 'deleteproduct'])->name('delete.product');
+Route::get('/product_details/{product_id}', [ProductController::class,'productdetails'])->name('product.details');
 
 
 
 
+// category
+Route::get('/category_list',[CategoryController::class,'list_category'])->name('category.list');
+Route::get('/category_add',[CategoryController::class,'add_category'])->name('category.add');
+Route::post('/category_store',[CategoryController::class,'store_category'])->name('category.store');
+Route::get('/category_view/{category_id}', [CategoryController::class, 'details_category'])->name('category.view');
+Route::get('/category_edit/{category_id}',[CategoryController::class, 'edit_category'])->name('category.edit');
+Route::post('/category_update/{category_id}',[CategoryController::class, 'update_category'])->name('category.update');
+Route::get('/category_delete/{category_id}', [CategoryController::class, 'delete_category'])->name('delete.category');

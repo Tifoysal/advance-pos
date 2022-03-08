@@ -42,7 +42,13 @@
                 <a class="collapse-item" href="cards.html">Permissions</a>
             </div>
         </div>
-    </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('category.list')}}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Category</span></a>
+        </li>
+    
 
     <li class="nav-item">
         <a class="nav-link" href="{{route('product.list')}}">
