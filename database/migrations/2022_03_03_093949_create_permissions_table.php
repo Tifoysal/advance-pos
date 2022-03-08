@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('module_id')->constrained('modules')->restrictOnDelete();
             $table->string('name');
             $table->string('slug');
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

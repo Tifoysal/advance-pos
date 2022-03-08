@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
+use App\Models\RolePermission;
 use Illuminate\Http\Request;
 use App\Models\Role;
 class RoleController extends Controller
@@ -13,7 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $role=Role::all();
+        $role=Role::with('permissions')->get();
+//        dd($role);
         return view('admin.layouts.role.index',compact('role'));
     }
 
@@ -36,14 +39,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-    //  dd($request->all());
+//      dd($request->all());
         Role::create([
-            'name'=>$request->role_name,
-            'status'=>$request->role_status,
+            'name'=>$request->name
          ]);
          return redirect()->back();
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -96,6 +98,27 @@ class RoleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function assignForm($role_id)
+    {
+    $modules=Module::with('permissions')->get();
+//    dd($modules);
+    return view('admin.layouts.role.assign_permissions',compact('modules','role_id'));
+    }
+
+    public function assignStore(Request $request)
+    {
+//dd($request->all());
+
+        foreach ($request->permissions as $permission)
+        {
+            RolePermission::create([
+               'role_id'=>$request->role_id,
+               'permission_id'=>$permission,
+            ]);
+        }
+         return redirect()->route('role.index');
     }
 }
 

@@ -5,9 +5,9 @@
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Name <span style="color:red">*</span> : </label>
-            <input required type="text" class="form-control" id="role_name" aria-describedby="emailHelp" placeholder="Enter Role Name">
+            <input name="name" required type="text" class="form-control" id="role_name" aria-describedby="emailHelp" placeholder="Enter Role Name">
         </div>
-       
+
         <!-- <div class="form-group">
             <div class="form-group">
                 <label for="email">Status<span style="color:red">*</span>:</label>
