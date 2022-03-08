@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolesController;
 
@@ -23,6 +25,10 @@ Route::get('/', function () {
 Route::resource('users',UserController::class);
 
 
+//product 
+Route::get('/product',[ProductController::class,'productlist'])->name('product.list');
+Route::get('/productcategory',[ProductController::class,'productcategory'])->name('product.category');
+Route::post('/product.store',[ProductController::class,'store'])->name('product.store');
 
 Route::get('/role',[RolesController::class,'index'])->name('role.index');
 Route::get('/role/create',[RolesController::class,'create'])->name('role.create');
@@ -31,8 +37,6 @@ Route::get('/role_view/{role_id}', [RolesController::class, 'details_role'])->na
 Route::get('/role_edit/{role_id}',[RolesController::class, 'edit_role'])->name('role.edit');
 Route::post('/role_update/{role_id}',[RolesController::class, 'update_role'])->name('role.update');
 Route::get('/role_delete/{role_id}',[RolesController::class, 'delete_role'])->name('delete.role');
-
-
 // category
 Route::get('/category_list',[CategoryController::class,'list_category'])->name('category.list');
 Route::get('/category_add',[CategoryController::class,'add_category'])->name('category.add');
