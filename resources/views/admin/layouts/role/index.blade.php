@@ -20,10 +20,10 @@
         @foreach($role as $rol)
         <tr>
             <th scope="row">1</th>
-            <td>{{$rol->role_name}}</td>
-            <td>{{$rol->role_status}}</td>
-            <td><a class="btn btn-primary" href="{{route('view.role',$role->id)}}"><i class="fas fa-eye"></i></a></td>
-            <td><a class="btn btn-warning" href="{{route('edit.role',$role->id)}}"><i class="fas fa-edit"></i></a></td></td>
+            <td>{{$rol->name}}</td>
+            <td>{{$rol->status}}</td>
+            <td><a class="btn btn-primary" href="{{route('view.role',$rol->id)}}"><i class="fas fa-eye"></i></a></td>
+            <td><a class="btn btn-warning" href="{{route('edit.role',$rol->id)}}"><i class="fas fa-edit"></i></a></td></td>
         </tr>
         @endforeach
 
