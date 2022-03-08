@@ -4,7 +4,7 @@
 
 
     <p>
-        <a href="{{route('add.role')}}" class="btn btn-success">Create New Role</a>
+        <a href="{{route('role.create')}}" class="btn btn-success">Create New Role</a>
     </p>
 
     <table class="table">

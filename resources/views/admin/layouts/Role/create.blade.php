@@ -1,7 +1,6 @@
 @extends('admin.master')
 
 @section('content')
-
 <form action="{{route('role.store')}}" method="POST" >
 @csrf
 @if(session()->has ('success'))
@@ -19,14 +18,16 @@
         </ul>
     </div>
 @endif
-
+       
 
         <div class="form-group">
             <div class="form-group">
                 <label for="name">Name <span style="color:red">*</span>:</label>
-                <input name="name" required type="text" class="form-control" id="name" placeholder="Enter Role Name">
+                <input required type="text" class="form-control" id="name" placeholder="Enter Role Name">
             </div>
         </div>
+
+       
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection
