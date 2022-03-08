@@ -1,11 +1,12 @@
 @extends('admin.master')
 
 @section('content')
-    <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('users.update',$useredit->id)}}" method="POST" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Name <span style="color:red">*</span> : </label>
-            <input name="username" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter User Name">
+            <input value="{{$useredit->name}}" name="username" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter User Name">
         </div>
         <div class="form-group">
             <label for="role">Select Role <span style="color:red">*</span></label>
@@ -20,7 +21,7 @@
         <div class="form-group">
             <div class="form-group">
                 <label for="email">Email <span style="color:red">*</span>:</label>
-                <input  name="email" required type="email" class="form-control" id="email" placeholder="Enter User Email">
+                <input value="{{$useredit->email}}" name="email" required type="email" class="form-control" id="email" placeholder="Enter User Email">
             </div>
         </div>
 
@@ -32,10 +33,10 @@
         </div>
         <div class="form-group">
             <div class="form-group">
-                <label for="textiput" class="form-label">Image:</label>
+                <label for="fileInput">Image:</label>
                 <input name="Imagefile" type="file" class="form-control" id="fileInput">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="Update" class="btn btn-primary">Update</button>
     </form>
 @endsection

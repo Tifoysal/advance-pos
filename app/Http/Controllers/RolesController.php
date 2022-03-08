@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Http\Controllers\RolesContoller;
 
 class RolesController extends Controller
 {
@@ -14,23 +13,24 @@ public function index()
         return view('admin.layouts.Role.index',compact('role'));
 
     }
-    public function create(){
+    public function create()
+    {
         return view('admin.layouts.Role.create');
     
-        }
-        public function store(Request $request)
+    }
+
+    public function store_role(Request $request)
     {
-        Role::class([
-            'name'=>$request->role_name,
-            'status'=>$request->role_status,
+        Role::create([
+            'name'=>$request->role_name
+            
          ]);
          return redirect()->back()->with('success','Add Role Successfully');
 
     }
+    
     public function details_role($role_id){
 
-
-        
         $roles = Role::find($role_id);
         return view('admin.layouts.role.view', compact('roles'));
      

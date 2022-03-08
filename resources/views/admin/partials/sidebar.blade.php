@@ -42,7 +42,12 @@
                 <a class="collapse-item" href="cards.html">Permissions</a>
             </div>
         </div>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('category.list')}}">
+              {{-- <span data-feather="layers"></span> --}}
+             Category
+            </a>
+          </li>
 
 
 </ul>
