@@ -2,6 +2,7 @@
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,16 @@ Route::get('/', function () {
 
 Route::resource('users',UserController::class);
 
+
+//product 
+Route::get('/product',[ProductController::class,'productlist'])->name('product.list');
+Route::get('/productcategory',[ProductController::class,'productcategory'])->name('product.category');
+Route::post('/product.store',[ProductController::class,'store'])->name('product.store');
+
+
+
+
+
 Route::get('add/role',[RoleController::class,'create'])->name('add.role');
 Route::get('list/role',[RoleController::class,'index'])->name('list.role');
 Route::post('create/role',[RoleController::class,'store'])->name('create.role');
@@ -37,3 +48,4 @@ Route::get('/category_view/{category_id}', [CategoryController::class, 'details_
 Route::get('/category_edit/{category_id}',[CategoryController::class, 'edit_category'])->name('category.edit');
 Route::post('/category_update/{category_id}',[CategoryController::class, 'update_category'])->name('category.update');
 Route::get('/category_delete/{category_id}', [CategoryController::class, 'delete_category'])->name('delete.category');
+
