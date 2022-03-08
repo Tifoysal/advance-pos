@@ -38,7 +38,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">User Management</h6>
                 <a class="collapse-item" href="{{route('users.index')}}">Users</a>
-                <a class="collapse-item" href="{{route('list.role')}}">Roles</a>
+
+                <a class="collapse-item" href="{{route('role.index')}}">Roles</a>
                 <a class="collapse-item" href="cards.html">Permissions</a>
             </div>
         </div>
@@ -58,11 +59,13 @@
             </a>
           </li>
 
+
     <li class="nav-item">
         <a class="nav-link" href="{{route('product.list')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Product</span></a>
     </li>
+
 
 
 </ul>
