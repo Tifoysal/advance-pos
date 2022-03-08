@@ -1,9 +1,11 @@
 <?php
+
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RolesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,18 +30,13 @@ Route::get('/product',[ProductController::class,'productlist'])->name('product.l
 Route::get('/productcategory',[ProductController::class,'productcategory'])->name('product.category');
 Route::post('/product.store',[ProductController::class,'store'])->name('product.store');
 
-
-
-
-
-Route::get('add/role',[RoleController::class,'create'])->name('add.role');
-Route::get('list/role',[RoleController::class,'index'])->name('list.role');
-Route::post('create/role',[RoleController::class,'store'])->name('create.role');
-Route::get('edit/role/{role_id}',[RoleController::class,'edit'])->name('edit.role');
-Route::post('update/role/{role_id}',[RoleController::class,'update'])->name('update.role');
-Route::get('view/role/{role_id}',[RoleController::class,'show'])->name('view.role');
-
-
+Route::get('/role',[RolesController::class,'index'])->name('role.index');
+Route::get('/role/create',[RolesController::class,'create'])->name('role.create');
+Route::post('/role_store',[RolesController::class,'store_role'])->name('role.store');
+Route::get('/role_view/{role_id}', [RolesController::class, 'details_role'])->name('role.view');
+Route::get('/role_edit/{role_id}',[RolesController::class, 'edit_role'])->name('role.edit');
+Route::post('/role_update/{role_id}',[RolesController::class, 'update_role'])->name('role.update');
+Route::get('/role_delete/{role_id}',[RolesController::class, 'delete_role'])->name('delete.role');
 // category
 Route::get('/category_list',[CategoryController::class,'list_category'])->name('category.list');
 Route::get('/category_add',[CategoryController::class,'add_category'])->name('category.add');
@@ -48,4 +45,3 @@ Route::get('/category_view/{category_id}', [CategoryController::class, 'details_
 Route::get('/category_edit/{category_id}',[CategoryController::class, 'edit_category'])->name('category.edit');
 Route::post('/category_update/{category_id}',[CategoryController::class, 'update_category'])->name('category.update');
 Route::get('/category_delete/{category_id}', [CategoryController::class, 'delete_category'])->name('delete.category');
-
