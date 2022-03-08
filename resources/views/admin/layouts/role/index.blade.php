@@ -4,7 +4,7 @@
 
 
     <p>
-        <a href="{{route('add.role')}}" class="btn btn-success">Create New Role</a>
+        <a href="{{route('role.create')}}" class="btn btn-success">Create New Role</a>
     </p>
 
     <table class="table">
@@ -17,13 +17,15 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($role as $rol)
+        @foreach($role as $roles)
         <tr>
             <th scope="row">1</th>
-            <td>{{$rol->role_name}}</td>
-            <td>{{$rol->role_status}}</td>
-            <td><a class="btn btn-primary" href="{{route('view.role',$role->id)}}"><i class="fas fa-eye"></i></a></td>
-            <td><a class="btn btn-warning" href="{{route('edit.role',$role->id)}}"><i class="fas fa-edit"></i></a></td></td>
+            <td>{{$roles->name}}</td>
+            <td>{{$roles->status}}</td>
+            <td><a href="{{route('role.view',$roles->id)}}" class="btn btn-secondary">View</a>
+                <a href="{{route('role.edit',$roles->id)}}" class="btn btn-info">Edit</a>
+                <a href="{{route('delete.role',$roles->id)}}" class="btn btn-danger">Delete</a>
+            </td>
         </tr>
         @endforeach
 
