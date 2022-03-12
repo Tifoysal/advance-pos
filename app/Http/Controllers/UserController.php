@@ -51,7 +51,7 @@ class UserController extends Controller
             'name'=>$request->username,
             'role_id' =>$request->role,
             'email'=>$request->email,
-            'password'=>$request->password,
+            'password'=>bcrypt($request->password),
             'image'=>$userimage,
          
         ]);

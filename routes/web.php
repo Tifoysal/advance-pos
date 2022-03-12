@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\Login\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,20 @@ use App\Http\Controllers\RolesController;
 */
 
 Route::get('/', function () {
-    return view('admin.master');
+    // return view('admin.master');
+    return redirect()->route('login.form');
 });
 
+//user
 Route::resource('users',UserController::class);
 
-//
+//user login
+Route::post('/user/login',[LoginController::class,'login'])->name('doLogin');
+Route::get('/user/logout',[LoginController::class,'logout'])->name('doLogout');
+
+Route::get('/Admin/Panel',[LoginController::class,'adminPanel'])->name('admin.panel');
+Route::get('/Admin/Form',[LoginController::class,'loginForm'])->name('login.form');
+
 ////product
 Route::get('/product',[ProductController::class,'productlist'])->name('product.list');
 Route::get('/productcategory',[ProductController::class,'productcategory'])->name('product.category');
