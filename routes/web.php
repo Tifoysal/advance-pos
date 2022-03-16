@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::resource('users',UserController::class);
-
+Route::get('/users-all-data',[UserController::class,'allData'])->name('users.allData');
 //
 ////product
 Route::get('/product',[ProductController::class,'productlist'])->name('product.list');

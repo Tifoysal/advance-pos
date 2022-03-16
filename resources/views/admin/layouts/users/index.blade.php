@@ -3,53 +3,51 @@
 @section('content')
 
 
-    <p>
-        <a href="{{route('users.create')}}" class="btn btn-success">Create New User</a>
-    </p>
 
-    <table class="table">
+<div style="width: 100%">
+    <table class="myTable" id="myTable">
         <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Image</th>
             <th scope="col">Role</th>
-            <th scope="col">Status</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
-
-        <tr>
-            <th scope="row">1</th>
-            <td>{{$user->name}}</td>
-            <td>
-                <img style="width:100px;" src="{{url('/uploads/User/'.$user->image)}}" alt="image">
-            </td>
-            <td>{{$user->role->name}}</td>
-            <td>{{$user->status}}</td>
-
-            <td>
-                <div style="display: flex;">
-                 <div style="padding-right: 10px;">
-{{--                     <a class="btn btn-light" style="color: rgb(228, 11, 11)" href="{{route('users.destroy',$user->id)}}">Delete</a>--}}
-                     <form action="{{route('users.destroy',$user->id)}}" method="post">
-                         @csrf
-                         @method('delete')
-                         <button type="submit" class="btn btn-danger">Delete</button>
-                     </form>
-
-                 </div>
-                <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(32, 77, 51)" href="{{route('users.show',$user->id)}}">view</a></div>
-                <div style="padding-right: 10px;"><a class="btn btn-light" style="color: rgb(32, 77, 51)" href="{{route('users.edit',$user->id)}}">Edit</a></div>
-                </div>
-            </td>
-        </tr>
-        @endforeach
 
         </tbody>
     </table>
 
+</div>
 @endsection
+
+@push('more_script')
+
+
+    <script type="text/javascript">
+        $(function () {
+            var table = $('.myTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('users.allData') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'name', name: 'name'},
+                    {data: 'image', name: 'image'},
+                    {data: 'role_id', name: 'role_id'},
+
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: true,
+                        searchable: true
+                    },
+                ]
+            });
+
+        });
+    </script>
+@endpush
 

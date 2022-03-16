@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Ecomarce</title>
+    <title>{{config('app.name')}}</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{url('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{url('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
 
 </head>
 
@@ -116,7 +117,9 @@
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
+    @stack('more_script')
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>

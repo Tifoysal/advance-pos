@@ -42,12 +42,7 @@
         </a>
 
     </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('category.list')}}">
-              {{-- <span data-feather="layers"></span> --}}
-             Categoryresources/views/admin/layouts/role/index.blade.php
-            </a>
-          </li>
+
 
 
     <li class="nav-item">

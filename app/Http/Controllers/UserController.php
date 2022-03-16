@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+
 
 class UserController extends Controller
 {
@@ -15,9 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        $users=User::all();
-        return view('admin.layouts.users.index',compact('users'));
+        return view('admin.layouts.users.index');
     }
 
     /**
@@ -27,7 +27,6 @@ class UserController extends Controller
      */
     public function create()
     {
-
         $roles=Role::all();
         return view('admin.layouts.users.create',compact('roles'));
     }
@@ -53,7 +52,7 @@ class UserController extends Controller
             'email'=>$request->email,
             'password'=>$request->password,
             'image'=>$userimage,
-         
+
         ]);
         return redirect()->back();
 
@@ -98,18 +97,18 @@ class UserController extends Controller
                 if($request->hasFile('Imagefile'))
                 {
                     $user_image=date('Ymdhis') .'.'. $request->file('Imagefile')->getClientOriginalExtension();
-        
+
                     $request->file('Imagefile')->storeAs('/uploads',$user_image);
-        
+
                 }
-        
+
         $userupdate->update([
             'name'=>$request->username,
             'role_id' =>$request->role,
             'email'=>$request->email,
             'password'=>$request->password,
             'image'=>$user_image,
- 
+
         ]);
         return redirect()->route('users.index');
     }
@@ -124,5 +123,22 @@ class UserController extends Controller
     {
         User::find($user_id)->delete();
         return redirect()->back();
+    }
+
+    public function allData(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = User::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a>
+                        <a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>
+                        <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 }
