@@ -27,14 +27,28 @@
         Interface
     </div>
 
+
+
+@if(getPermissions(auth()->user()->role_id,'users.index'))
     <li class="nav-item">
         <a class="nav-link" href="{{route('users.index')}}">Users</a>
     </li>
+@endif
+
+
+    @if(getPermissions(auth()->user()->role_id,'role.list'))
     <li class="nav-item">
-        <a class="nav-link" href="{{route('role.index')}}">Roles</a>
-    </li> <li class="nav-item">
+        <a class="nav-link" href="{{route('role.list')}}">Roles</a>
+    </li>
+    @endif
+
+    @if(getPermissions(auth()->user()->role_id,'permission.index'))
+        <li class="nav-item">
         <a class="nav-link" href="{{route('permission.index')}}">Permissions</a>
     </li>
+    @endif
+
+    @if(getPermissions(auth()->user()->role_id,'category.list'))
     <li class="nav-item">
         <a class="nav-link" href="{{route('category.list')}}">
             {{-- <span data-feather="layers"></span> --}}
@@ -43,13 +57,16 @@
 
     </li>
 
+    @endif
 
 
+    @if(getPermissions(auth()->user()->role_id,'product.list'))
     <li class="nav-item">
         <a class="nav-link" href="{{route('product.list')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Product</span></a>
     </li>
+    @endif
 
 
 

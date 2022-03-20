@@ -19,37 +19,50 @@ class ModulesTableSeeder extends Seeder
     public function run()
     {
         //User
-        $check_users=Module::where('name','Users')->first();
-        if(!$check_users)
-        {
-            $module=Module::create([
-                'name'=>'Users',
-                'status'=>'active'
+            $check_users = Module::firstOrCreate([
+                'name' => 'Users',
+                'status' => 'active'
             ]);
             //user - permission
-            $permissions=['users.index','users.create','users.store','users.show','users.edit','users.update','users.destroy'];
+            $permissions=['users.index','users.index2','users.create','users.store','users.show','users.edit','users.update','users.destroy'];
             foreach ($permissions as $permission)
             {
-                Permission::create([
-                    'module_id'=>$module->id,
+                Permission::firstOrCreate([
+                    'module_id'=>$check_users->id,
                     'name'=>$permission,
                     'slug'=>Str::slug($permission)
                 ]);
             }
-        }
 
-        $check_Category=Module::where('name','Category')->first();
-        if(!$check_Category) {
-            //Category
-            $category = Module::create([
+
+
+            $category = Module::firstOrCreate([
                 'name' => 'Category',
                 'status' => 'active'
             ]);
+
             //user - permission
             $category_permissions = ['category.list', 'category.add', 'category.store', 'category.view', 'category.edit', 'category.update', 'delete.category'];
             foreach ($category_permissions as $permission) {
-                Permission::create([
+                Permission::firstOrCreate([
                     'module_id' => $category->id,
+                    'name' => $permission,
+                    'slug' => Str::slug($permission)
+                ]);
+            }
+
+
+
+            //Category
+            $role = Module::firstOrCreate([
+                'name' => 'Role',
+                'status' => 'active'
+            ]);
+            //user - permission
+            $role_permissions = ['role.list', 'role.add', 'role.store', 'role.view', 'role.edit', 'role.update', 'role.category'];
+            foreach ($role_permissions as $permission) {
+                Permission::firstOrCreate([
+                    'module_id' => $role->id,
                     'name' => $permission,
                     'slug' => Str::slug($permission)
                 ]);
@@ -58,5 +71,5 @@ class ModulesTableSeeder extends Seeder
 
 
 
-    }
+
 }

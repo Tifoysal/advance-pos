@@ -34,7 +34,7 @@
 <div class="container-login100">
 <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
 
-<form action="{{route('doLogin')}}" method='post' class="login100-form validate-form flex-sb flex-w">
+<form action="{{route('admin.doLogin')}}" method='post' class="login100-form validate-form flex-sb flex-w">
 @csrf
 
 @if(session()->has('msg'))

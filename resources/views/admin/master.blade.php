@@ -47,6 +47,12 @@
                   {{session()->get('msg')}}
                   </p>
                 @endif
+
+                    @if(session()->has('warning'))
+                        <p class="alert alert-danger">
+                            {{session()->get('warning')}}
+                        </p>
+                    @endif
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -111,23 +117,23 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url('/')}}/vendor/jquery/jquery.min.js"></script>
+    <script src="{{url('/')}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{url('/')}}/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{url('/')}}/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="{{url('/')}}/vendor/chart.js/Chart.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     @stack('more_script')
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="{{url('/')}}/js/demo/chart-area-demo.js"></script>
+    <script src="{{url('/')}}/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
