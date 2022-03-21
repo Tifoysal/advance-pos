@@ -25,6 +25,10 @@ use App\Http\Controllers\Login\LoginController;
 Route::get('/admin/login/form', [LoginController::class, 'loginForm'])->name('admin.login');
 Route::post('/admin/dologin', [LoginController::class, 'login'])->name('admin.doLogin');
 
+Route::get('auth/facebook', [LoginController::class, 'facebookRedirect'])->name('login.facebook');
+Route::get('auth/facebook/callback', [LoginController::class, 'loginWithFacebook']);
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', function () {
@@ -32,7 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 //    return redirect()->route('login.form');
     })->name('admin');
 
-    Route::get('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
     Route::group(['middleware'=>'checkPermission'],function (){
 

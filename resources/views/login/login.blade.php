@@ -25,6 +25,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{url('/css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('/css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
     <meta name="robots" content="noindex, follow">
     <script nonce="8971166d-b29b-45cf-bb1b-5bb8246ef500">(function (w, d) {
@@ -94,6 +95,12 @@ Password
                     <button class="login100-form-btn">
                         Login
                     </button>
+                </div>
+
+                <div class="container-login100-form-btn" style="padding:10px;">
+                    <a href="{{route('login.facebook')}}" class="btn btn-primary">
+                        <i class="fa-brands fa-facebook"></i>
+                        Login With Facebook</a>
                 </div>
             </form>
         </div>

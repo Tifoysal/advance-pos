@@ -30,4 +30,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' => [
+        'client_id' => '1392133251227501',
+        'client_secret' => '87f11ba6941ea075c7fea82cdc33d13d',
+        'redirect' => 'https://advance-pos.test/auth/facebook/callback',
+    ],
+
+
 ];
