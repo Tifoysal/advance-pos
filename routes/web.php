@@ -24,6 +24,10 @@ use App\Http\Controllers\Login\LoginController;
 //user login
 Route::get('/admin/login/form', [LoginController::class, 'loginForm'])->name('admin.login');
 Route::post('/admin/dologin', [LoginController::class, 'login'])->name('admin.doLogin');
+Route::get('/admin/forget-password', [LoginController::class, 'forgetPassword'])->name('admin.forget.password');
+Route::post('/admin/forget-password', [LoginController::class, 'forgetPasswordEmailPost'])->name('admin.forget.password.post');
+Route::get('/admin/reset-password/{token}', [LoginController::class, 'resetPassword'])->name('admin.reset.password');
+Route::post('/admin/reset-password/', [LoginController::class, 'resetPasswordPost'])->name('admin.reset.password.post');
 
 Route::get('auth/facebook', [LoginController::class, 'facebookRedirect'])->name('login.facebook');
 Route::get('auth/facebook/callback', [LoginController::class, 'loginWithFacebook']);
