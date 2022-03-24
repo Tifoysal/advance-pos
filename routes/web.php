@@ -33,7 +33,7 @@ Route::get('auth/facebook', [LoginController::class, 'facebookRedirect'])->name(
 Route::get('auth/facebook/callback', [LoginController::class, 'loginWithFacebook']);
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:web,admin'], function () {
 
     Route::get('/', function () {
         return view('admin.master');
