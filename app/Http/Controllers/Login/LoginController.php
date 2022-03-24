@@ -123,7 +123,7 @@ class LoginController extends Controller
         // dd($request->all());
         $userPost=$request->except('_token');
 
-        if(Auth::attempt($userPost)){
+        if(Auth::guard('web')->attempt($userPost) || Auth::guard('admin')->attempt($userPost)){
             return redirect()->route('admin')->with('msg','Login Successful');
         }
         else
@@ -131,7 +131,7 @@ class LoginController extends Controller
     }
 
     public function logout(){
-        Auth::logout();
+        Auth::guard('web')->logout() || Auth::guard('admin')->logout();
         return redirect()->route('admin.login')->with('msg','Logged out.');
     }
 
