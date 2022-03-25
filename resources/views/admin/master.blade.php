@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="{{url('css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -117,6 +118,8 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    
+	<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="{{url('/')}}/vendor/jquery/jquery.min.js"></script>
     <script src="{{url('/')}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -134,7 +137,8 @@
     <!-- Page level custom scripts -->
     <script src="{{url('/')}}/js/demo/chart-area-demo.js"></script>
     <script src="{{url('/')}}/js/demo/chart-pie-demo.js"></script>
-
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
 </body>
 
 </html>

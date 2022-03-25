@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use  Brian2694\Toastr\Facades\Toastr;
 
 class LoginController extends Controller
 {
@@ -124,7 +125,9 @@ class LoginController extends Controller
         $userPost=$request->except('_token');
 
         if(Auth::attempt($userPost)){
-            return redirect()->route('admin')->with('msg','Login Successful');
+            Toastr::success('User login Successfully', 'success');
+            return redirect()->route('admin');
+           
         }
         else
         return redirect()->back()->with('msg','Incorrect information');
