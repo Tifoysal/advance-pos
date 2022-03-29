@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserEvent;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -17,7 +19,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.layouts.users.index');
+        if(Cache::has('USERS'))
+        {
+            $users=Cache::get('USERS');
+            $msg='Data from cache';
+        }else
+        {
+            $users=User::with('role')->get();
+            Cache::put('USERS',$users);
+            $msg='Data from Database';
+        }
+
+        return view('admin.layouts.users.index',compact('users','msg'));
     }
 
     /**
@@ -54,6 +67,8 @@ class UserController extends Controller
             'image'=>$userimage,
 
         ]);
+
+        event(new UserEvent());
         return redirect()->back();
 
     }
@@ -121,7 +136,9 @@ class UserController extends Controller
      */
     public function destroy($user_id)
     {
-        User::find($user_id)->delete();
+        $user=User::findOrFail($user_id);
+        $user->delete();
+        event(new UserEvent($user));
         return redirect()->back();
     }
 
