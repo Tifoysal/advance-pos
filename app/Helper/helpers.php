@@ -4,9 +4,15 @@
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\RolePermission;
+use phpDocumentor\Reflection\Types\Boolean;
 
-function getPermissions($role_id,$route){
-
+/**
+ * @param $role_id
+ * @param $route
+ * @return String|bool
+ */
+function getPermissions( $role_id, $route)
+{
 //  $permission_id= Permission::where('name',$route)->first()->id??'';
 //
 //if($permission_id)
@@ -19,7 +25,6 @@ function getPermissions($role_id,$route){
 //    }
 //}
 //    return false;
-
     $permission= Permission::where('name',$route)->with('role_permission',function ($query) use($role_id){
         return $query->where('role_id',$role_id)->first();
     })->first();

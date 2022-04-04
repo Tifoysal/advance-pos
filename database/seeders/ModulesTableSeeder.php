@@ -34,8 +34,6 @@ class ModulesTableSeeder extends Seeder
                 ]);
             }
 
-
-
             $category = Module::firstOrCreate([
                 'name' => 'Category',
                 'status' => 'active'
@@ -50,8 +48,6 @@ class ModulesTableSeeder extends Seeder
                     'slug' => Str::slug($permission)
                 ]);
             }
-
-
 
             //Category
             $role = Module::firstOrCreate([
@@ -68,8 +64,4 @@ class ModulesTableSeeder extends Seeder
                 ]);
             }
         }
-
-
-
-
 }
