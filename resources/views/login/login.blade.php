@@ -61,7 +61,7 @@ Account Login
 Email
 </span>
                 <div class="wrap-input100 validate-input m-b-36" data-validate="UserEmail is required">
-                    <input class="input100" type="text" name="email" value="zulauf.kaylah@huel.net">
+                    <input class="input100" type="text" name="email" value="admin@gmail.com">
                     <span class="focus-input100"></span>
                 </div>
                 <span class="txt1 p-b-11">

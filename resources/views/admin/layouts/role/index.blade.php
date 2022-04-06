@@ -1,10 +1,9 @@
 @extends('admin.master')
-
 @section('content')
 
 
     <p>
-        <a href="{{route('role.create')}}" class="btn btn-success">Create New Role</a>
+        <a href="{{route('role.add')}}" class="btn btn-success">Create New Role</a>
     </p>
 
     <table class="table">
@@ -29,7 +28,7 @@
                 <p class="badge badge-success">{{$data->permission->name}}</p>
                 @endforeach
             </td>
-            <td><a class="btn btn-primary" href="{{route('view.role',$rol->id)}}"><i class="fas fa-eye"></i></a>
+            <td><a class="btn btn-primary" href="{{route('role.view',$rol->id)}}"><i class="fas fa-eye"></i></a>
             <a class="btn btn-primary" href="{{route('permission.assign.form',$rol->id)}}"><i class="fas fa-eye"></i>
                 Assign Permission</a>
             <a class="btn btn-warning" href="{{route('edit.role',$rol->id)}}"><i class="fas fa-edit"></i></a></td>

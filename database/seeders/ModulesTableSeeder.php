@@ -63,5 +63,20 @@ class ModulesTableSeeder extends Seeder
                     'slug' => Str::slug($permission)
                 ]);
             }
+
+            //Permission
+            $permi = Module::firstOrCreate([
+                'name' => 'Permission',
+                'status' => 'active'
+            ]);
+            //user - permission
+            $role_permissions = ['permission.index', 'permission.add', 'permission.store', 'permission.view', 'permission.edit', 'permission.update', 'permission.category','permission.assign.form','permission.assign.store'];
+            foreach ($role_permissions as $permission) {
+                Permission::firstOrCreate([
+                    'module_id' => $permi->id,
+                    'name' => $permission,
+                    'slug' => Str::slug($permission)
+                ]);
+            }
         }
 }

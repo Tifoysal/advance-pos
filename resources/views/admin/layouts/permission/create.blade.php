@@ -1,5 +1,5 @@
 @extends('admin.master')
-
+z
 @section('content')
     <form action="{{route('create.role')}}" method='POST'>
         @csrf
