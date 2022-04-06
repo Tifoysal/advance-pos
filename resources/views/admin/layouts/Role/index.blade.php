@@ -22,7 +22,7 @@
             <th scope="row">1</th>
             <td>{{$roles->name}}</td>
             <td>{{$roles->status}}</td>
-            <td><a href="{{route('role.view',$roles->id)}}" class="btn btn-secondary">View</a>
+            <td><a href="{{route('view.role',$roles->id)}}" class="btn btn-secondary">View</a>
                 <a href="{{route('role.edit',$roles->id)}}" class="btn btn-info">Edit</a>
                 <a href="{{route('delete.role',$roles->id)}}" class="btn btn-danger">Delete</a>
             </td>

@@ -55,8 +55,8 @@ class RoleController extends Controller
      */
     public function show($role_id)
     {
-        $role=role::find($role_id);
-     return view('admin.layouts.role.view',compact('role'));
+        $roles=role::find($role_id);
+     return view('admin.layouts.Role.view',compact('roles'));
     }
 
     /**
@@ -104,7 +104,7 @@ class RoleController extends Controller
     {
     $modules=Module::with('permissions')->get();
 //    dd($modules);
-    return view('admin.layouts.role.assign_permissions',compact('modules','role_id'));
+    return view('admin.layouts.Role.assign_permissions',compact('modules','role_id'));
     }
 
     public function assignStore(Request $request)
@@ -118,7 +118,7 @@ class RoleController extends Controller
                'permission_id'=>$permission,
             ]);
         }
-         return redirect()->route('role.index');
+         return redirect()->route('role.list');
     }
 }
 
