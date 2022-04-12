@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
-use App\Http\Repositories\ProductRepository;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Product;
 use App\Models\Category;
 
-class ProductController extends Controller
+class ProductController extends FormRequest
 {
     public function productlist(){
         
@@ -36,25 +34,5 @@ class ProductController extends Controller
            return redirect()->back()->with('success', 'Product Updated Successfully.');
        }
 
-
-    //product details
-
-    public function productdetails($product_id){
-
-
-        
-        $products = Product::find($product_id);
-        return view('admin.layouts.product.details', compact('products'));
-     
-}
-
-
-     //delete
-       public function deleteproduct($product_id){
-    
-
-        Product::find($product_id)->delete();
-        return redirect()->back()->with('success','Product deleted sucessfully');
-    }
 
 }

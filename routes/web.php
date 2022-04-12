@@ -77,11 +77,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
     Route::get('role/list', [RoleController::class, 'index'])->name('role.list');
-    Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
+    Route::get('role/create', [RoleController::class, 'create'])->name('role.add');
     Route::post('role/store', [RoleController::class, 'store'])->name('role.store');
     Route::get('edit/role/{role_id}', [RoleController::class, 'edit'])->name('edit.role');
     Route::post('update/role/{role_id}', [RoleController::class, 'update'])->name('update.role');
-    Route::get('view/role/{role_id}', [RoleController::class, 'show'])->name('view.role');
+    Route::get('view/role/{role_id}', [RoleController::class, 'show'])->name('role.view');
 
 
 // permission

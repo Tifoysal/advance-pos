@@ -1,5 +1,4 @@
 @extends('admin.master')
-
 @section('content')
 
 
@@ -14,9 +13,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($permissions as $permission)
+        @foreach($permissions as $key=>$permission)
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{$key+1}}</th>
             <td>{{$permission->name}}</td>
             <td>{{$permission->status}}</td>
             <td><a class="btn btn-primary" href=""><i class="fas fa-eye"></i></a></td>
