@@ -19,6 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         if(Cache::has('USERS'))
         {
             $users=Cache::get('USERS');

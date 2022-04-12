@@ -22,12 +22,17 @@ use App\Http\Controllers\Login\LoginController;
 
 
 //user login
+Route::get('/', [LoginController::class, 'test'])->name('admin.login');
+
+
 Route::get('/admin/login/form', [LoginController::class, 'loginForm'])->name('admin.login');
 Route::post('/admin/dologin', [LoginController::class, 'login'])->name('admin.doLogin');
 Route::get('/admin/forget-password', [LoginController::class, 'forgetPassword'])->name('admin.forget.password');
 Route::post('/admin/forget-password', [LoginController::class, 'forgetPasswordEmailPost'])->name('admin.forget.password.post');
 Route::get('/admin/reset-password/{token}', [LoginController::class, 'resetPassword'])->name('admin.reset.password');
 Route::post('/admin/reset-password/', [LoginController::class, 'resetPasswordPost'])->name('admin.reset.password.post');
+
+
 
 Route::get('auth/facebook', [LoginController::class, 'facebookRedirect'])->name('login.facebook');
 Route::get('auth/facebook/callback', [LoginController::class, 'loginWithFacebook']);
@@ -40,6 +45,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     })->name('admin');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
+    Route::get('/customer/create',[\App\Http\Controllers\Backend\CustomerController::class,'createForm'])->name('customer.create');
+    Route::post('/customer/store',[\App\Http\Controllers\Backend\CustomerController::class,'store'])->name('customer.store');
+
 
     Route::group(['middleware'=>'checkPermission'],function (){
 

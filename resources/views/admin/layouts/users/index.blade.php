@@ -4,6 +4,8 @@
 
 <p class="btn btn-primary">{{$msg}}</p>
 
+
+<a class="btn btn-success" href="{{route('customer.create')}}">Create New Customer</a>
 <div style="width: 100%">
     <table class="myTable" id="myTable">
         <thead>
@@ -36,6 +38,7 @@
     </table>
 
 </div>
+
 @endsection
 
 {{--@push('more_script')--}}

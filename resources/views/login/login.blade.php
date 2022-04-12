@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{{url('/css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('/css/main.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css">
     <meta name="robots" content="noindex, follow">
     <script nonce="8971166d-b29b-45cf-bb1b-5bb8246ef500">(function (w, d) {
             !function (a, e, t, r, z) {
@@ -78,6 +78,9 @@ Password
                     <input class="input100" type="password" name="password" value="123456">
                     <span class="focus-input100"></span>
                 </div>
+
+
+
                 <div class="flex-sb-m w-full p-b-48">
                     <div class="contact100-form-checkbox">
                         <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
@@ -106,6 +109,9 @@ Password
         </div>
     </div>
 </div>
+
+
+
 <div id="dropDownSelect1"></div>
 
 <script src="{{url('/js/jquery-3.2.1.min.js')}}"></script>

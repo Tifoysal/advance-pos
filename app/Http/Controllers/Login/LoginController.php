@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Login;
 
+use App\Jobs\SendResetPasswordJob;
 use App\Mail\ResetPasswordEmail;
 use App\Models\User;
 use Carbon\Carbon;
-use http\Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,10 +15,18 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
+//$user=DB::table('users')->select('*')->where('user_id','1')->get();
+// output: select * from users where user_id=1
+    public function test()
+    {
+
+
+
+    }
+
 
     public function forgetPassword()
     {
-
         return view('admin.layouts.reset-password.forget');
     }
 
@@ -38,14 +46,13 @@ class LoginController extends Controller
             ]);
             $link=route('admin.reset.password',$token);
 
-            Mail::to($request->email)->send(new ResetPasswordEmail($link));
+          dispatch(new  SendResetPasswordJob($link,$user->email));
 
             return redirect()->back()->with('msg','Email sent to : '. $request->email);
         }catch (\Throwable $exception)
         {
            dd($exception->getMessage());
         }
-
         //send email
     }
 
@@ -70,19 +77,14 @@ class LoginController extends Controller
                   'password'=> bcrypt($request->password),
                    'reset_token'=>null
                ]);
-
-
                return redirect()->back()->with('msg','Password Reset Successful.');
             }else{
                 return redirect()->back()->withErrors('Token Expired.');
             }
-
         }else
         {
             return redirect()->back()->withErrors('Token not found.');
         }
-
-
     }
 
 
@@ -117,12 +119,9 @@ class LoginController extends Controller
         }
     }
 
-
     public function login(Request $request)
     {
-        // dd($request->all());
         $userPost=$request->except('_token');
-
         if(Auth::attempt($userPost)){
             return redirect()->route('admin')->with('msg','Login Successful');
         }
@@ -142,6 +141,5 @@ class LoginController extends Controller
     public function loginForm(){
         return view('login.login');
     }
-
 
 }

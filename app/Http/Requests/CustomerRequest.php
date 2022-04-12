@@ -13,6 +13,11 @@ class CustomerRequest extends FormRequest
      */
     public function authorize()
     {
+
+        if(auth()->user()->role_id==1)
+        {
+            return true;
+        }
         return false;
     }
 
@@ -23,7 +28,6 @@ class CustomerRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
             'name'=>'required',
             'email'=>'required',
@@ -31,3 +35,4 @@ class CustomerRequest extends FormRequest
         ];
     }
 }
+
