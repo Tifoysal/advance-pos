@@ -21,8 +21,11 @@ use App\Http\Controllers\Login\LoginController;
 */
 
 
+Route::get('/language/{local}', [LoginController::class, 'changeLanguage'])->name('language');
+
 //user login
-Route::get('/', [LoginController::class, 'test'])->name('admin.login');
+Route::get('/', [LoginController::class, 'test'])->name('test');
+Route::get('/package', [LoginController::class, 'package'])->name('ajax.package');
 
 
 Route::get('/admin/login/form', [LoginController::class, 'loginForm'])->name('admin.login');

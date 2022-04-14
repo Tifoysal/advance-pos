@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Login;
 
 use App\Jobs\SendResetPasswordJob;
 use App\Mail\ResetPasswordEmail;
+use App\Models\Category;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -19,10 +21,26 @@ class LoginController extends Controller
 // output: select * from users where user_id=1
     public function test()
     {
+        return view('test');
+    }
 
+    public function changeLanguage($local)
+    {
+        App::setLocale($local);
+        session()->put('applocale', $local);
 
+        return redirect()->back();
 
     }
+
+    public function package()
+    {
+        $user=User::all();
+        return $user;
+    }
+
+
+
 
 
     public function forgetPassword()

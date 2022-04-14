@@ -1,7 +1,5 @@
 @extends('admin.master')
 @section('content')
-
-
     <p>
         <a href="{{route('role.add')}}" class="btn btn-success">Create New Role</a>
     </p>

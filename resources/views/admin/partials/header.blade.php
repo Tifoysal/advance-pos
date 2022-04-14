@@ -19,6 +19,23 @@
             </div>
         </div>
     </form>
+    <label for="">Select Language</label>
+    <div class="col-md-4">
+        <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">
+            <option value="">Select language</option>
+            <option value="{{route('language','en')}}">EN</option>
+            <option value="{{route('language','bn')}}">BN</option>
+            <option value="{{route('language','ar')}}">AR</option>
+        </select>
+
+{{--        <select name="" id="" class="form-control">--}}
+{{--            <a href="#"><option value="">EN</option></a>--}}
+{{--            <a href="#"><option value="">BN</option></a>--}}
+{{--            <a href="#"><option value="">FR</option></a>--}}
+
+{{--        </select>--}}
+    </div>
+
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">

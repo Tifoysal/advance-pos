@@ -1,6 +1,5 @@
 @extends('admin.master')
 @section('content')
-<h4>Category List</h4>
 <br>
 <br>
 <table class="table">
@@ -14,7 +13,8 @@
         </tr>
         </thead>
 
-<h1>Category List</h1>
+<h1> {{__('message.list')}}</h1>
+
 <table class="table">
     <thead>
       <tr>
@@ -25,8 +25,8 @@
       </tr>
     </thead>
     <tbody>
-        @foreach ($categories as $key=>$category)   
-     
+        @foreach ($categories as $key=>$category)
+
         <tr>
           <th scope="row">{{$key+1}}</th>
             <td>{{$category->name}}</td>
@@ -40,7 +40,7 @@
 
                 <a href="{{route('category.edit',$category->id)}}" class="btn btn-info">Edit</a>
                 <a href="{{route('delete.category',$category->id)}}" class="btn btn-danger">Delete</a></td>
-            
+
           </tr>
           @endforeach
     </tbody>

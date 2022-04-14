@@ -2,6 +2,10 @@
 
 @section('content')
 
+
+
+    @dd(app()->getLocale())
+
 <p class="btn btn-primary">{{$msg}}</p>
 
 
