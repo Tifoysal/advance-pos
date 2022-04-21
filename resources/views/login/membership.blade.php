@@ -72,7 +72,9 @@
                             </div>
                             <h5 class="card-title mbr-fonts-style display-5">Premium</h5>
                             <p class="card-text mbr-fonts-style display-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <h6 class="link mbr-fonts-style display-4"><a href="{{route('membership.get','premium')}}" class="text-info">$100</a></h6>
+                            <h6 class="link mbr-fonts-style display-4">
+                                <a href="{{route('membership.get','premium')}}" class="text-info">
+                                    $100</a></h6>
                         </div>
                     </div>
                 </div>

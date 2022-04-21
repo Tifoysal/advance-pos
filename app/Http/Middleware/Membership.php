@@ -16,13 +16,12 @@ class Membership
      */
     public function handle(Request $request, Closure $next)
     {
-       if(auth()->check())
-       {
+
            if(!empty(auth()->user()->membership_type))
            {
                return $next($request);
            }
            return redirect()->route('membership');
-       }
+
     }
 }
