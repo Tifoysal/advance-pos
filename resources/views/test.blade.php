@@ -53,7 +53,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $.ajax({
-            url: '{{route('package')}}',
+            {{--url: '{{route('')}}',--}}
             context: document.body,
             success: function (response) {
                 for (index in response) {

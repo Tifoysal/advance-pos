@@ -1,8 +1,6 @@
 @extends('admin.master')
 
 @section('content')
-
-
     <p>
         <a href="{{route('role.create')}}" class="btn btn-success">Create New Role</a>
     </p>
@@ -28,7 +26,6 @@
             </td>
         </tr>
         @endforeach
-
         </tbody>
     </table>
 

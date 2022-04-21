@@ -42,6 +42,11 @@ Route::get('auth/facebook/callback', [LoginController::class, 'loginWithFacebook
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
+    Route::get('/membership', [LoginController::class, 'membership'])->name('membership');
+    Route::get('/get-membership/{type}', [LoginController::class, 'membershipGet'])->name('membership.get');
+
+Route::group( ['middleware' => 'membership'], function () {
+
     Route::get('/', function () {
         return view('admin.master');
 //    return redirect()->route('login.form');
@@ -96,5 +101,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/permissions/assign/{role_id}', [RoleController::class, 'assignForm'])->name('permission.assign.form');
     Route::post('/permissions/assign/store', [RoleController::class, 'assignStore'])->name('permission.assign.store');
 
+    });
     });
 });

@@ -14,11 +14,11 @@ class CustomerRequest extends FormRequest
     public function authorize()
     {
 
-        if(auth()->user()->role_id==1)
-        {
-            return true;
-        }
-        return false;
+//        if(auth()->user()->role_id==1)
+//        {
+//            return true;
+//        }
+        return true;
     }
 
     /**
@@ -34,5 +34,12 @@ class CustomerRequest extends FormRequest
             'mobile'=>'required',
         ];
     }
+//
+//    public function attributes()
+//    {
+//        return [
+//            'mobile' => 'Nice Name',
+//        ];
+//    }
 }
 

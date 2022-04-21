@@ -24,6 +24,43 @@ class LoginController extends Controller
         return view('test');
     }
 
+    public function membership()
+    {
+        return view('login.membership');
+    }
+
+    public function membershipGet($type)
+    {
+        if($type=='free')
+        {
+            //make free membership
+            $user=User::find(auth()->user()->id);
+            $user->update([
+                'membership_type'=>'free'
+            ]);
+            return redirect()->route('admin');
+        }elseif($type=='premium')
+        {
+            //decide price
+            $price=100;
+
+            dd($price);
+        }else
+        {
+            //decide price
+            $price=150;
+            dd($price);
+        }
+
+        //make payment via ssl commerz
+
+
+
+
+
+        return view('login.membership');
+    }
+
     public function changeLanguage($local)
     {
         App::setLocale($local);
