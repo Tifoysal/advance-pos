@@ -16,11 +16,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use Spatie\DbDumper\Databases\MySql;
 
 class LoginController extends Controller
 {
+
+    public function backupDb()
+    {
+
+
+        MySql::create()
+            ->setDbName(config('database.connections.mysql.database'))
+            ->setUserName(config('database.connections.mysql.username'))
+            ->setPassword(config('database.connections.mysql.password'))
+            ->dumpToFile('advance-pos.sql');
+
+        return response()->download(public_path('/advance-pos.sql'));
+
+    }
 //$user=DB::table('users')->select('*')->where('user_id','1')->get();
 // output: select * from users where user_id=1
+
     public function test()
     {
         return view('test');

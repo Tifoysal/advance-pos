@@ -61,6 +61,8 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
+    Route::get('/backup-db',[LoginController::class,'backupDb'])->name('backup.db');
+
     Route::get('/membership', [LoginController::class, 'membership'])->name('membership');
     Route::get('/get-membership/{type}', [LoginController::class, 'membershipGet'])->name('membership.get');
 
