@@ -13,7 +13,7 @@
         </tr>
         </thead>
 
-<h1> {{__('message.list')}}</h1>
+<h1> {{__('Category List')}}</h1>
 
 <table class="table">
     <thead>

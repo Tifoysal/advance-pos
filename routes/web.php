@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\Login\LoginController;
 |
 */
 
+Route::get('/export/excel',[ExportController::class,'exportExcel'])->name('excel.export');
 
 Route::get('/language/{local}', [LoginController::class, 'changeLanguage'])->name('language');
 

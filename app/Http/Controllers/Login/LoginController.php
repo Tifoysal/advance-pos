@@ -23,8 +23,6 @@ class LoginController extends Controller
 
     public function backupDb()
     {
-
-
         MySql::create()
             ->setDbName(config('database.connections.mysql.database'))
             ->setUserName(config('database.connections.mysql.username'))
