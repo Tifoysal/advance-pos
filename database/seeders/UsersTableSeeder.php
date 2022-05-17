@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
 
         ]);
         User::factory()->count(5)->create();
-        
+
             $data = [
                 ['role_id' => '1', 'permission_id' => 1],
                 ['role_id' => '1', 'permission_id' => 9],
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
                 ['role_id' => '1', 'permission_id' => 31],
               ];
               DB::table('role_permissions')->insert($data);
-        
-        
+
+
     }
 }

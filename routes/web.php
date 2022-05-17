@@ -23,6 +23,7 @@ use App\Http\Controllers\Login\LoginController;
 */
 
 Route::get('/export/excel',[ExportController::class,'exportExcel'])->name('excel.export');
+Route::post('file-import', [ExportController::class, 'fileImport'])->name('file-import');
 
 Route::get('/language/{local}', [LoginController::class, 'changeLanguage'])->name('language');
 
@@ -97,7 +98,7 @@ Route::group( ['middleware' => 'membership'], function () {
 
 
 // category
-    Route::get('/category_list', [CategoryController::class, 'list_category'])->name('category.list');
+    Route::get('/categories', [CategoryController::class, 'list_category'])->name('category.list');
     Route::get('/category_add', [CategoryController::class, 'add_category'])->name('category.add');
     Route::post('/category_store', [CategoryController::class, 'store_category'])->name('category.store');
     Route::get('/category_view/{category_id}', [CategoryController::class, 'details_category'])->name('category.view');
