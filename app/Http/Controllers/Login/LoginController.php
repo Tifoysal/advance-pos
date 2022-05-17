@@ -165,6 +165,7 @@ class LoginController extends Controller
         $request->validate([
            'email'=>'required|exists:users'
         ]);
+        
         try {
             //generate link to send
             $token=Str::random(40);
