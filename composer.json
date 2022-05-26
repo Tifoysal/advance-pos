@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "devfaysal/laravel-muthofun-sms": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
@@ -13,6 +14,7 @@
         "laravel/tinker": "^2.7",
         "maatwebsite/excel": "^3.1",
         "spatie/db-dumper": "^3.2",
+        "spatie/laravel-activitylog": "^4.5",
         "yajra/laravel-datatables-oracle": "^9.19"
     },
     "require-dev": {

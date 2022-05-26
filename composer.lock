@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "136cbc865fc2e6041964cc86bbb82673",
+    "content-hash": "cfcc988a0079f4b6844f0886f0c05fb1",
     "packages": [
         {
             "name": "brick/math",
@@ -65,6 +65,69 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "devfaysal/laravel-muthofun-sms",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devfaysal/laravel-muthofun-sms.git",
+                "reference": "90b5d2623ca53c0530951291240df7a320a4f6d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devfaysal/laravel-muthofun-sms/zipball/90b5d2623ca53c0530951291240df7a320a4f6d5",
+                "reference": "90b5d2623ca53c0530951291240df7a320a4f6d5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Devfaysal\\Muthofun\\MuthofunServiceProvider"
+                    ],
+                    "aliases": {
+                        "Muthofun": "Devfaysal\\Muthofun\\Facades\\Muthofun"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Devfaysal\\Muthofun\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Faysal Ahamed",
+                    "email": "devfaysal@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple Laravel wrapper for MuthoFun SMS Gateway API",
+            "homepage": "https://github.com/devfaysal/laravel-muthofun-sms",
+            "keywords": [
+                "api",
+                "laravel",
+                "muthofun",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/devfaysal/laravel-muthofun-sms/issues",
+                "source": "https://github.com/devfaysal/laravel-muthofun-sms/tree/1.0.2"
+            },
+            "time": "2022-03-31T11:54:30+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -3409,6 +3472,156 @@
                 }
             ],
             "time": "2022-03-10T16:01:42+00:00"
+        },
+        {
+            "name": "spatie/laravel-activitylog",
+            "version": "4.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-activitylog.git",
+                "reference": "daa1abc8f4c6074b2e1d993c3092461b96cf0f96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/daa1abc8f4c6074b2e1d993c3092461b96cf0f96",
+                "reference": "daa1abc8f4c6074b2e1d993c3092461b96cf0f96",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "^8.0 || ^9.0",
+                "illuminate/database": "^8.53 || ^9.0",
+                "illuminate/support": "^8.0 || ^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.6.3"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "orchestra/testbench": "^6.23 || ^7.0",
+                "pestphp/pest": "^1.20"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Activitylog\\ActivitylogServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\Activitylog\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tom Witkowski",
+                    "email": "dev.gummibeer@gmail.com",
+                    "homepage": "https://gummibeer.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A very simple activity logger to monitor the users of your website or application",
+            "homepage": "https://github.com/spatie/activitylog",
+            "keywords": [
+                "activity",
+                "laravel",
+                "log",
+                "spatie",
+                "user"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-activitylog/issues",
+                "source": "https://github.com/spatie/laravel-activitylog/tree/4.5.2"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-04-21T09:46:53+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.11.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "baeb3df0ebb3a541394fdaf8cbe6115bf4034a59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/baeb3df0ebb3a541394fdaf8cbe6115bf4034a59",
+                "reference": "baeb3df0ebb3a541394fdaf8cbe6115bf4034a59",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^7.0|^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^5.0|^6.23|^7.0",
+                "phpunit/phpunit": "^9.4",
+                "spatie/test-time": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.11.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-15T20:01:36+00:00"
         },
         {
             "name": "symfony/console",

@@ -21,8 +21,8 @@ class UsersTableSeeder extends Seeder
             'name'=>'admin',
             'email'=>'admin@gmail.com',
             'role_id'=>1,
-            'password'=>bcrypt('123456')
-
+            'password'=>bcrypt('123456'),
+            'membership_type'=>'free'
         ]);
         User::factory()->count(5)->create();
 

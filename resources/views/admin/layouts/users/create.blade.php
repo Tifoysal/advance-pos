@@ -26,6 +26,13 @@
 
         <div class="form-group">
             <div class="form-group">
+                <label for="mobile">Mobile <span style="color:red">*</span>:</label>
+                <input  name="mobile" required type="text" class="form-control" id="mobile" placeholder="Enter User mobile">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group">
                 <label for="password">Password <span style="color:red">*</span>:</label>
                 <input name="password" required type="password" class="form-control" id="password" placeholder="Enter User password">
             </div>

@@ -23,6 +23,7 @@ class UserFactory extends Factory
           'name'=>$this->faker->name,
           'email'=>$this->faker->email,
           'password'=>bcrypt('123456'),
+          'membership_type'=>'free',
         ];
     }
 

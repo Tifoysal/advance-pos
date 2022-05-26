@@ -2,7 +2,7 @@
 @section('content')
  {{-- <h1>Add Category</h1> <br> --}}
 
-<form action="{{route('customer.store')}}" method="POST">
+ <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     @if(session()->has ('success'))
     <p class="alert alert-success">
@@ -33,6 +33,12 @@
         <input name="password" required type="password" class="form-control"  placeholder="Enter Password">
     </div>
 
+    <div class="form-group">
+        <div class="form-group">
+            <label for="mobile">Mobile <span style="color:red">*</span>:</label>
+            <input  name="mobile" required type="text" class="form-control" id="mobile" placeholder="Enter User mobile">
+        </div>
+    </div>
 
 
 

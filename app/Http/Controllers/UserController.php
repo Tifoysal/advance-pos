@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\UserEvent;
 use App\Models\Role;
 use App\Models\User;
+use Devfaysal\Muthofun\Facades\Muthofun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Yajra\DataTables\Facades\DataTables;
@@ -53,6 +54,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $userimage='';
         if ($request->hasfile('Imagefile')) {
             $file=$request->file('Imagefile');
@@ -61,15 +63,17 @@ class UserController extends Controller
            // dd($userimage);
         }
         User::create([
-            'name'=>$request->username,
-            'role_id' =>$request->role,
+            'name'=>$request->name,
+            'role_id' =>1,
             'email'=>$request->email,
+            'membership_type'=>'free',
             'password'=>bcrypt($request->password),
             'image'=>$userimage,
 
         ]);
+        Muthofun::send($request->mobile , 'Congratulation from Kodeeo limited.');
 
-        event(new UserEvent());
+//        event(new UserEvent());
         return redirect()->back();
 
     }
