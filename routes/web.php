@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -29,6 +31,9 @@ Route::get('/language/{local}', [LoginController::class, 'changeLanguage'])->nam
 
 //user login
 Route::get('/', [LoginController::class, 'test'])->name('test');
+Route::get('/ajax/list', [AjaxController::class, 'list'])->name('list');
+Route::get('/ajax/get', [AjaxController::class, 'get'])->name('ajax.get');
+Route::post('/ajax/create', [AjaxController::class, 'create'])->name('ajax.create');
 Route::get('/package', [LoginController::class, 'package'])->name('ajax.package');
 
 
@@ -57,9 +62,12 @@ Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+
+Route::get('/type', [TypeController::class, 'list']);
+Route::get('/get-type', [TypeController::class, 'getTypeData'])->name('type.data');
+Route::post('/set-type', [TypeController::class, 'setTypeData'])->name('type.store');
+
 //SSLCOMMERZ END
-
-
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {

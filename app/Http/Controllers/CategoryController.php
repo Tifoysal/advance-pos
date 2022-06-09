@@ -53,8 +53,6 @@ return view('admin.layouts.category.list', compact('categories'));
 }
 
 public function delete_category($category_id){
-
-
         category::find($category_id)->delete();
         return redirect()->back()->with('success','Category Deleted.');
     }
